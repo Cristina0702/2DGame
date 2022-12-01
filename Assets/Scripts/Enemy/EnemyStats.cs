@@ -23,7 +23,7 @@ public class EnemyStats
 
     public void Combine(EnemyStats e1, EnemyStats e2)
     {
-        int i = 0, rand;
+        int rand;
         rand = Random.Range(1, 6);
         switch (rand)
         {
@@ -41,7 +41,7 @@ public class EnemyStats
 
     public void Mutate(float s, float v, float bS, float fR, int h)
     {
-        int i = 0, rand;
+        int rand;
         rand = Random.Range(1, 6);
         switch (rand)
         {

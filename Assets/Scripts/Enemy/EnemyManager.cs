@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject[] enemyPrefab;
-    public GameObject[] food;
+
     //EnemySprites enemyPrefabs;
     GameObject[] spawnPoints;
     public int populationSize;
@@ -99,15 +99,15 @@ public class EnemyManager : MonoBehaviour
 
     public void newLevel()
     {
-        GameObject AX = GameObject.FindGameObjectWithTag("AX");
-        GameObject BX = GameObject.FindGameObjectWithTag("BX");
-        GameObject CX = GameObject.FindGameObjectWithTag("CX");
+        //GameObject AX = GameObject.FindGameObjectWithTag("AX");
+        //GameObject BX = GameObject.FindGameObjectWithTag("BX");
+        //GameObject CX = GameObject.FindGameObjectWithTag("CX");
 
        
        
-        if (AX != null) AX.SetActive(false);
-        if (BX != null) BX.SetActive(false);
-        if (CX != null) CX.SetActive(false);
+        //if (AX != null) AX.SetActive(false);
+        //if (BX != null) BX.SetActive(false);
+        //if (CX != null) CX.SetActive(false);
         
 
         for (int i = 0; i < population.Count; i++)
@@ -140,28 +140,28 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void LunchTime(){
-        for(int i=0; i<population.Count; i++){
-            population[i].GetComponent<EnemyAI>().RemoveAllBalls();
-            population[i].SetActive(false);
-        }
+    //public void LunchTime(){
+    //    for(int i=0; i<population.Count; i++){
+    //        population[i].GetComponent<EnemyAI>().RemoveAllBalls();
+    //        population[i].SetActive(false);
+    //    }
 
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        int index = 0;
-        for(int i = 0; i < spawnPoints.Length; i++){
-            index = (index + 1) % food.Length;
-            Vector3 pos = new Vector3(spawnPoints[i].transform.position.x, spawnPoints[i].transform.position.y, 0);
-            Instantiate(food[index], pos, Quaternion.identity);
-        }
-    }
+    //    spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+    //    int index = 0;
+    //    for(int i = 0; i < spawnPoints.Length; i++){
+    //        index = (index + 1) % food.Length;
+    //        Vector3 pos = new Vector3(spawnPoints[i].transform.position.x, spawnPoints[i].transform.position.y, 0);
+    //        Instantiate(food[index], pos, Quaternion.identity);
+    //    }
+    //}
 
-    public void ContinueGame(){
-        GameObject[] fs = GameObject.FindGameObjectsWithTag("Food");
-        foreach (GameObject f in fs)
-        {
-            Destroy(f);
-        }
+    //public void ContinueGame(){
+    //    GameObject[] fs = GameObject.FindGameObjectsWithTag("Food");
+    //    foreach (GameObject f in fs)
+    //    {
+    //        Destroy(f);
+    //    }
 
-        //newLevel();
-    }
+    //    //newLevel();
+    //}
 }

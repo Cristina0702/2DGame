@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     GameObject target;
     Transform targetpos;
 
-    public Animator animator;
+    //public Animator animator;
 
     public GameObject GFX;
     public GameObject enemyBullet;
@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
     float outOfVision = 6f;
     public int hit_player;
 
-    bool reachedEndOfPath = false;
+    //bool reachedEndOfPath = false;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -205,9 +205,9 @@ public class EnemyAI : MonoBehaviour
             nextWaypointDistance = 0.5f;
         }
 
-        animator.SetFloat("Horizontal", force.x);
-        animator.SetFloat("Vertical", force.y);
-        animator.SetFloat("Speed", force.sqrMagnitude);
+        //animator.SetFloat("Horizontal", force.x);
+        //animator.SetFloat("Vertical", force.y);
+        //animator.SetFloat("Speed", force.sqrMagnitude);
 
         rb.AddForce(force);
 
