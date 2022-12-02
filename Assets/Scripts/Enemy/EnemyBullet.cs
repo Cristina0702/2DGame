@@ -37,8 +37,6 @@ public class EnemyBullet : MonoBehaviour
         }
 
         collided = true;
-           
-        //Spawn particles
     }
     
 }

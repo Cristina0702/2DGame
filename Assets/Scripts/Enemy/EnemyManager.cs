@@ -28,22 +28,9 @@ public class EnemyManager : MonoBehaviour
     void Awake()
     {
         singleton = this;
-        
-        //enemyPrefabs = enemies.GetComponent<EnemySprites>();
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        /*
-        GameObject[] em = GameObject.FindGameObjectsWithTag("EnemyManager");
-
-        if(em.Length > 1)
-        {
-            Destroy(em[1]);
-        }
-
-        DontDestroyOnLoad(this.gameObject);
-        singleton = this;
-        */
     }
     
     // Start is called before the first frame update
@@ -70,7 +57,6 @@ public class EnemyManager : MonoBehaviour
             Vector3 pos = new Vector3(spawnPoints[i].transform.position.x, spawnPoints[i].transform.position.y, 0);
             GameObject b = Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], pos, Quaternion.identity);
             b.GetComponent<EnemyAI>().Init();
-            //b.GetComponent<EnemyAI>().findSpots(findSpots(spawnPoints[i]));
 
             population.Add(b);
         }
@@ -85,35 +71,22 @@ public class EnemyManager : MonoBehaviour
         if(Random.Range(0,1000) > 10)
         {
             e.Init();
-            //e.findSpots(findSpots(spawnPoints[spot]));
             e.dna.Mutate(100, 8, 5, 5, 5);
         }
         else
         {
             e.Init();
-            //e.findSpots(findSpots(spawnPoints[spot]));
             e.dna.Combine(B1.GetComponent<EnemyAI>().dna, B2.GetComponent<EnemyAI>().dna);
         }
         return offspring;
     }
 
     public void newLevel()
-    {
-        //GameObject AX = GameObject.FindGameObjectWithTag("AX");
-        //GameObject BX = GameObject.FindGameObjectWithTag("BX");
-        //GameObject CX = GameObject.FindGameObjectWithTag("CX");
-
-       
-       
-        //if (AX != null) AX.SetActive(false);
-        //if (BX != null) BX.SetActive(false);
-        //if (CX != null) CX.SetActive(false);
-        
+    {       
 
         for (int i = 0; i < population.Count; i++)
         {
-            population[i].GetComponent<EnemyAI>().RemoveAllBalls();
-            //population[i].SetActive(false);
+            population[i].GetComponent<EnemyAI>().RemoveBullets();
         }
 
         teleport = false;
@@ -139,29 +112,4 @@ public class EnemyManager : MonoBehaviour
             Destroy(sortedlist[i]);
         }
     }
-
-    //public void LunchTime(){
-    //    for(int i=0; i<population.Count; i++){
-    //        population[i].GetComponent<EnemyAI>().RemoveAllBalls();
-    //        population[i].SetActive(false);
-    //    }
-
-    //    spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-    //    int index = 0;
-    //    for(int i = 0; i < spawnPoints.Length; i++){
-    //        index = (index + 1) % food.Length;
-    //        Vector3 pos = new Vector3(spawnPoints[i].transform.position.x, spawnPoints[i].transform.position.y, 0);
-    //        Instantiate(food[index], pos, Quaternion.identity);
-    //    }
-    //}
-
-    //public void ContinueGame(){
-    //    GameObject[] fs = GameObject.FindGameObjectsWithTag("Food");
-    //    foreach (GameObject f in fs)
-    //    {
-    //        Destroy(f);
-    //    }
-
-    //    //newLevel();
-    //}
 }

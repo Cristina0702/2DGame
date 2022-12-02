@@ -8,8 +8,6 @@ public class EnemyAI : MonoBehaviour
     GameObject target;
     Transform targetpos;
 
-    //public Animator animator;
-
     public GameObject GFX;
     public GameObject enemyBullet;
     List<GameObject> activeBullets;
@@ -35,7 +33,6 @@ public class EnemyAI : MonoBehaviour
     float outOfVision = 6f;
     public int hit_player;
 
-    //bool reachedEndOfPath = false;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -158,10 +155,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-
-
-
-    // Update is called once per frame
+    //called once per frame
     void FixedUpdate()
     {
         for (int i = 0; i < activeBullets.Count; i++)
@@ -171,16 +165,12 @@ public class EnemyAI : MonoBehaviour
                 if (activeBullets[i].GetComponent<EnemyBullet>().hitplayer)
                 {
                     ++hit_player;
-                    //Debug.Log("No of hits: " + hit_player);
                 }
                 GameObject b = activeBullets[i];
                 activeBullets.Remove(activeBullets[i]);
                 Destroy(b);
             }
         }
-
-        //if (healed) return;
-        
         
         if (path == null)
             return;
@@ -205,10 +195,6 @@ public class EnemyAI : MonoBehaviour
             nextWaypointDistance = 0.5f;
         }
 
-        //animator.SetFloat("Horizontal", force.x);
-        //animator.SetFloat("Vertical", force.y);
-        //animator.SetFloat("Speed", force.sqrMagnitude);
-
         rb.AddForce(force);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
@@ -230,11 +216,10 @@ public class EnemyAI : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             ++hit_player;
-            //Debug.Log("No of hits: "+ hit_player);
         }
     }
 
-    public void RemoveAllBalls()
+    public void RemoveBullets()
     {
         for (int i = 0; i < activeBullets.Count; i++)
         {  
